@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        quickDebugs
+        Answer!
     </div>
 </template>
 <script>

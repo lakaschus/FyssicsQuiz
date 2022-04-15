@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        misc
+        Question?
     </div>
 </template>
 <script>

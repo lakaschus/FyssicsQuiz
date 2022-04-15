@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        newFeatures
+        Answer!
     </div>
 </template>
 <script>

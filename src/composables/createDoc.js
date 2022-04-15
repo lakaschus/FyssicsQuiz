@@ -1,5 +1,5 @@
 import { db } from "@/firebase/config"
-import { addDoc, collection } from "@firebase/firestore"
+import { addDoc, collection } from "firebase/firestore"
 
 const createDoc = async (colName, json) => {
   /**

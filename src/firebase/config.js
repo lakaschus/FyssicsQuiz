@@ -16,4 +16,7 @@ initializeApp(firebaseConfig);
 const db = getFirestore()
 const auth = getAuth()
 
-export { db, auth }
+// definition of collection names
+const mainCollectionName = 'chats'
+
+export { db, auth, mainCollectionName }
