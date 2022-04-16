@@ -6,7 +6,7 @@ import {defineAsyncComponent} from "vue";
 
 
 export default {
-  name: "Question",
+  name: "DynamicComponent",
   props: {
     path: {
       type: String,
@@ -20,7 +20,7 @@ export default {
   },
   methods: {
       component() {
-          return defineAsyncComponent(() => import(this.path))
+          return defineAsyncComponent(() => import(/* @vite-ignore */ this.path))
       }
   }
 }
