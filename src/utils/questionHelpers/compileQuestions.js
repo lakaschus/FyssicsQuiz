@@ -84,12 +84,27 @@ export function compileAllQuestions(data) {
   data.forEach((el, ind) => {
     if (verifyMeta(el)) {
       if (el.specialCategory) {
-        allQuestions[el.category][el.subCategory][el.specialCategory]["questions"].push(el.path)
-      }
-      else {
+        allQuestions[el.category][el.subCategory][el.specialCategory][
+          "questions"
+        ].push(el.path)
+      } else {
         allQuestions[el.category][el.subCategory]["questions"].push(el.path)
       }
     }
   })
+  return allQuestions
+}
+
+export async function getAllQuestions() {
+  let questions = getAllQuestionPaths(
+    import.meta.glob("../../questions/*/meta.json")
+  )
+  const metas = []
+  for (const ind in questions) {
+    let meta = await getMeta("@/questions/" + questions[ind] + "/meta.json")
+    metas.push(meta)
+  }
+  console.log("METAS: ", metas)
+  const allQuestions = compileAllQuestions(metas)
   return allQuestions
 }

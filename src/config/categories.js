@@ -21,6 +21,7 @@ export const categories = {
       "...": { questions: [] },
       questions: [],
     },
+    "Classical Mechanics": { "Lagrangian Mechanics": { questions: [] }, questions: [] },
     "...": { "...": { questions: [] } },
   },
   Experiment: {

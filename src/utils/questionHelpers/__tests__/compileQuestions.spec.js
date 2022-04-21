@@ -3,7 +3,7 @@ import {
   getAllQuestionPaths,
   getMeta,
   verifyMeta,
-  compileAllQuestions,
+  compileAllQuestions, getAllQuestions
 } from "@/utils/questionHelpers/compileQuestions.js"
 
 const meta1 = {
@@ -91,4 +91,10 @@ test("compileAllQuestions", async () => {
   const allQuestions = compileAllQuestions(metas)
   expect(allQuestions["Theory"]["High-Energy Physics"]["Quantum Chromodynamics"]["questions"][0]).toBe('@/questions/__tests__/question1/')
   expect(allQuestions["Experiment"]["Quantum Mechanics"]["questions"][0]).toBe('@/questions/__tests__/question2/')
+})
+
+test("getAllQuestions", async () => {
+  const allQuestions = await getAllQuestions("questions/")
+  console.log("🚀 ~ file: compileQuestions.spec.js ~ line 98 ~ test ~ allQuestions", allQuestions["Theory"]["High-Energy Physics"]["Quantum Chromodynamics"]["questions"][0])
+  expect(allQuestions["Theory"]["Classical Mechanics"]["questions"][0]).toBe('@/questions/NewtonsLawsOfMotion/')
 })
