@@ -6,16 +6,14 @@
           <n-gradient-text
             :gradient="`linear-gradient(90deg, ${colors.green[600]}, ${colors.blue[600]})`"
           >
-            Vue Voxer
+            Fyssics Quiz
           </n-gradient-text>
         </n-h1>
-
-        <p>Realtime Walkie-Talkie Voice Chat</p>
       </div>
     </header>
 
 <div class="text-center">
-    <router-view></router-view>
+    <router-view class="bg-[url('../src/assets/images/backgroundImage.svg')] bg-repeat h-screen"></router-view>
     </div>
   </div>
 </template>

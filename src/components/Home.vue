@@ -15,22 +15,10 @@
   </n-card>
 </template>
 
-<script>
+<script setup>
 import Login from './Login.vue'
 import User from './User.vue'
 import UserProfile from './UserProfile.vue'
 import ChatList from './ChatList.vue'
 import { NCard, NH1, NH3 } from 'naive-ui'
-
-export default {
-    components: {
-        Login, 
-        User,
-        UserProfile,
-        ChatList,
-        NCard,
-        NH1,
-        NH3
-    }
-}
 </script>
