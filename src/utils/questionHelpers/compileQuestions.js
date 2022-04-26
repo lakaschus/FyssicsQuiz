@@ -95,13 +95,13 @@ export function compileAllQuestions(data) {
   return allQuestions
 }
 
-export async function getAllQuestions() {
+export async function getAllQuestions(prefix = '@') {
   let questions = getAllQuestionPaths(
     import.meta.glob("../../questions/*/meta.json")
   )
   const metas = []
   for (const ind in questions) {
-    let meta = await getMeta("@/questions/" + questions[ind] + "/meta.json")
+    let meta = await getMeta(prefix + "/questions/" + questions[ind] + "/meta.json")
     metas.push(meta)
   }
   console.log("METAS: ", metas)

@@ -94,7 +94,7 @@ test("compileAllQuestions", async () => {
 })
 
 test("getAllQuestions", async () => {
-  const allQuestions = await getAllQuestions("questions/")
+  const allQuestions = await getAllQuestions()
   console.log("🚀 ~ file: compileQuestions.spec.js ~ line 98 ~ test ~ allQuestions", allQuestions["Theory"]["High-Energy Physics"]["Quantum Chromodynamics"]["questions"][0])
   expect(allQuestions["Theory"]["Classical Mechanics"]["questions"][0]).toBe('@/questions/NewtonsLawsOfMotion/')
 })
