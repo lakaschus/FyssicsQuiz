@@ -36,4 +36,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.n-card.n-card--bordered {
+  border: 1px solid rgb(166, 166, 166)
+}
+  </style>
