@@ -1,5 +1,5 @@
 <template lang="">
-  <n-card title="Playground">
+  <n-card title="Playground" class="text-center w-12/12">
     <n-tabs default-value="debugging" size="large" justify-content="space-evenly">
       <n-tab-pane name="debugging" tab="Debugging">
         <debugging />
@@ -49,4 +49,8 @@ export default {
   }
 }
 </script>
-<style lang=""></style>
+<style scoped>
+#menu {
+  width: 1200px !important;
+}
+</style>

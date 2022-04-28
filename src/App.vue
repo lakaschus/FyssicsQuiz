@@ -12,10 +12,8 @@
       </div>
     </header>
 
-<div class="flex justify-center ">
-<div class="text-center w-5/12">
+<div id="menu">
     <router-view></router-view>
-    </div>
   </div>
   </div>
 </template>
