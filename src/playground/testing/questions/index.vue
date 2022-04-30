@@ -103,6 +103,7 @@ export default {
   mounted() {
     getAllQuestions("../..").then((data) => {
       this.allQuestions = data
+      console.log("🚀 ~ file: index.vue ~ line 106 ~ getAllQuestions ~ this.allQuestions", this.allQuestions["Mathematics"]["Linear Algebra"])
       console.log(
         "🚀 ~ file: index.vue ~ line 22 ~ getAllQuestions ~ this.allQuestions",
         Object.keys(this.allQuestions)

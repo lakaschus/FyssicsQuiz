@@ -67,10 +67,12 @@ export const categories = {
     questions: []
   },
   Mathematics: {
-    Analysis: { '': { questions: [] }, questions: [] },
-    Geometry: { '': { questions: [] }, questions: [] },
-    Stochastic: { '': { questions: [] }, questions: [] },
-    'Linear Algebra': { '': { questions: [] }, questions: [] },
+    'Real Analysis': { questions: [] },
+    Geometry: { questions: [] },
+    Stochastic: { questions: [] },
+    'Number Theory': { questions: [] },
+    'Linear Algebra': { questions: [] },
+    'Complex Analysis': { questions: [] },
     questions: []
   },
   Philosophy: {
@@ -89,7 +91,6 @@ export const categories = {
     questions: []
   },
   Other: {
-    Biophysics: { questions: [] },
     'Computational Physics': { questions: [] },
     questions: []
   }

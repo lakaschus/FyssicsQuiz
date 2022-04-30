@@ -1,13 +1,22 @@
 import { categories } from '@/config/categories.js'
 
 export function getAllQuestionPaths (modules) {
+  console.log(
+    '🚀 ~ file: compileQuestions.js ~ line 4 ~ getAllQuestionPaths ~ modules',
+    modules
+  )
   /**
    * @name compileQuestions Searches all existing questions and save them to storage
    * @param path Path specification starting from src/
    */
   const paths = []
   for (const path in modules) {
-    paths.push(path.split('/').slice(-2, -1))
+    const splittedPath = path.split('/')
+    paths.push(
+      splittedPath
+        .slice(-2 - (splittedPath.length - 5), -1)
+        .join('/')
+    )
   }
   return paths.flat()
 }
@@ -97,7 +106,7 @@ export function compileAllQuestions (data) {
 
 export async function getAllQuestions (prefix = '@') {
   const questions = getAllQuestionPaths(
-    import.meta.glob('../../questions/*/meta.json')
+    import.meta.glob('../../questions/**/meta.json')
   )
   const metas = []
   for (const ind in questions) {
