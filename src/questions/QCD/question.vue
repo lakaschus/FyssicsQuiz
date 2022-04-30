@@ -2,8 +2,7 @@
   <div class="text-left">
     <n-card :title="title">
       <p>
-        Name the Newton's laws of motion! Write down the formulas and briefly
-        explain what they are describing.
+        Write down the Lagrangian of Quantum-Chromodynamics.
       </p>
     </n-card>
   </div>
