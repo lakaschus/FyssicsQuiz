@@ -1,5 +1,5 @@
-import { db } from "@/firebase/config"
-import { addDoc, collection } from "firebase/firestore"
+import { db } from '@/firebase/config'
+import { addDoc, collection } from 'firebase/firestore'
 
 const createDoc = async (colName, json) => {
   /**
@@ -12,7 +12,7 @@ const createDoc = async (colName, json) => {
     const docRef = await addDoc(colRef, json)
     return docRef
   } catch (err) {
-    console.log("something went wrong: ", err)
+    console.log('something went wrong: ', err)
     return err
   }
 }

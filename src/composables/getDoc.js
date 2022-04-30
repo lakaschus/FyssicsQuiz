@@ -1,7 +1,7 @@
-import { db, mainCollectionName } from "../firebase/config"
-import { doc, getDoc } from "firebase/firestore"
+import { db, mainCollectionName } from '../firebase/config'
+import { doc, getDoc } from 'firebase/firestore'
 
-export async function getDocById(id) {
+export async function getDocById (id) {
   /**
    * @name getDocById Returns document matching the given id
    */
@@ -12,7 +12,7 @@ export async function getDocById(id) {
     docSnap = await getDoc(docRef)
     docData = docSnap.data()
   } catch (error) {
-    console.log("🚀 ~ file: getDoc.js ~ line 16 ~ getDocById ~ error", error)
+    console.log('🚀 ~ file: getDoc.js ~ line 16 ~ getDocById ~ error', error)
   }
   return docData
 }

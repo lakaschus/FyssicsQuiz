@@ -10,7 +10,7 @@ import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
 
-initializeApp(firebaseConfig);
+initializeApp(firebaseConfig)
 
 // init services
 const db = getFirestore()

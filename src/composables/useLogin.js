@@ -1,8 +1,8 @@
-import { ref } from "vue"
+import { ref } from 'vue'
 
 // firebase imports
-import { auth } from "../firebase/config"
-import { signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from '../firebase/config'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 
 const error = ref(null)
 const isPending = ref(false)
@@ -18,14 +18,12 @@ const login = async (email, password) => {
     }
     error.value = null
     isPending.value = false
-  } 
-  catch (err) {
-    console.log("🚀 ~ file: useSignup.js ~ line 18 ~ signup ~ err", err)
+  } catch (err) {
+    console.log('🚀 ~ file: useSignup.js ~ line 18 ~ signup ~ err', err)
     error.value = err.message
     isPending.value = false
   }
 }
-
 
 const useLogin = () => {
   return { error, isPending, login }

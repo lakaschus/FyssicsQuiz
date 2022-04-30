@@ -1,12 +1,11 @@
-import { defineStore } from "pinia"
-import { getAllQuestions } from "@/utils/questionHelpers/compileQuestions.js"
+import { defineStore } from 'pinia'
 
 export const useQuestionsStore = defineStore({
-  id: "questions",
+  id: 'questions',
   state: () => ({
-    questions: null,
+    questions: null
   }),
   getters: {
-    getQuestions: (state) => state,
+    getQuestions: state => state
   }
 })
