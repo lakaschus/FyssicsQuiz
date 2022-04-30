@@ -8,6 +8,7 @@ export const categories = {
       'Quantum Chromodynamics': { questions: [] },
       'Quantum Electrodynamics': { questions: [] },
       'Standard Model': { questions: [] },
+      'Effective Field Theories': { questions: [] },
       'Quantum Gravity': { questions: [] },
       'Dark Matter': { questions: [] },
       questions: []
@@ -28,7 +29,9 @@ export const categories = {
     },
     'Condensed Matter': {
       Superconductivity: { questions: [] },
-      '...': { questions: [] },
+      'Phase Transitions': { questions: [] },
+      Emergence: { questions: [] },
+      'Soft Matter': { questions: [] },
       questions: []
     },
     'Classical Mechanics': {
@@ -54,34 +57,41 @@ export const categories = {
       'Schrödinger equation': { questions: [] },
       'Interpretations of Quantum Mechanics': { questions: [] },
       questions: []
-    }
+    },
+    questions: []
   },
   Experiment: {
     Thermodynamics: { '': { questions: [] }, questions: [] },
     'Classical Mechanics': { '': { questions: [] }, questions: [] },
     'Quantum Mechanics': { '': { questions: [] }, questions: [] },
-    '...': { '': { questions: [] }, questions: [] }
+    questions: []
   },
   Mathematics: {
+    Analysis: { '': { questions: [] }, questions: [] },
     Geometry: { '': { questions: [] }, questions: [] },
     Stochastic: { '': { questions: [] }, questions: [] },
     'Linear Algebra': { '': { questions: [] }, questions: [] },
-    '...': { '': { questions: [] }, questions: [] }
+    questions: []
   },
   Philosophy: {
-    Ontology: { '': { questions: [] }, questions: [] },
-    Epistemeology: { '': { questions: [] }, questions: [] },
-    '...': { '': { questions: [] }, questions: [] }
+    Ontology: { questions: [] },
+    Epistemology: { questions: [] },
+    Logic: { questions: [] },
+    'Philosophy of Science': { questions: [] },
+    questions: []
+  },
+  'History Of Physics': {
+    questions: []
   },
   Fun: {
-    'Brain Teaser': { '': { questions: [] }, questions: [] },
-    'What if?': { '': { questions: [] }, questions: [] },
-    '...': { '': { questions: [] }, questions: [] }
+    'Brain Teaser': { questions: [] },
+    'What if?': { questions: [] },
+    questions: []
   },
   Other: {
-    Biophysics: { '': { questions: [] }, questions: [] },
-    'Computational Physics': { '': { questions: [] }, questions: [] },
-    '...': { '': { questions: [] }, questions: [] }
+    Biophysics: { questions: [] },
+    'Computational Physics': { questions: [] },
+    questions: []
   }
 }
 
