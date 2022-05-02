@@ -1,5 +1,6 @@
 <template>
   <div id="app" class="bg-[url('../src/assets/images/backgroundImage.svg')] bg-repeat h-screen">
+  <base target="_blank">
     <header>
       <div class="text-center">
         <n-h1 class="text-6xl">
