@@ -92,6 +92,6 @@ test('getAllQuestions', async () => {
       .questions[0]
   )
   expect(allQuestions.Theory['Classical Mechanics'].questions[0]).toBe(
-    '@/questions/NewtonsLawsOfMotion/'
+    '@/questions/Theory/Classical Mechanics/NewtonsLawsOfMotion/'
   )
 })

@@ -46,6 +46,6 @@ describe('Question Store', () => {
     )
     expect(
       questions.questions.Theory['Classical Mechanics'].questions[0]
-    ).toBe('@/questions/NewtonsLawsOfMotion/')
+    ).toBe('@/questions/Theory/Classical Mechanics/NewtonsLawsOfMotion/')
   })
 })
