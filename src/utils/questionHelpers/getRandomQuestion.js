@@ -1,3 +1,5 @@
+import { useQuestionsStore } from '@/stores/questions'
+
 export function getRandomQuestion (settings) {
   /**
    * Returns a random question respecting the settings constraints
