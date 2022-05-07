@@ -12,11 +12,7 @@ export function getAllQuestionPaths (modules) {
   const paths = []
   for (const path in modules) {
     const splittedPath = path.split('/')
-    paths.push(
-      splittedPath
-        .slice(-2 - (splittedPath.length - 5), -1)
-        .join('/')
-    )
+    paths.push(splittedPath.slice(-2 - (splittedPath.length - 5), -1).join('/'))
   }
   return paths.flat()
 }
@@ -118,4 +114,29 @@ export async function getAllQuestions (prefix = '@') {
   console.log('METAS: ', metas)
   const allQuestions = compileAllQuestions(metas)
   return allQuestions
+}
+
+export function createCategoryTree (allQuestions, parent = null) {
+  /**
+   * Creates a recursive tree containing all categories as labels and keys
+   * @param allQuestions data structure containing all questions
+   * @param level Denotes the current tree level; needed to create unique keys
+   *
+   */
+  const arr = []
+  const labels = Object.keys(allQuestions)
+  if (labels.length > 1) {
+    for (const key in labels) {
+      if (labels[key] !== 'questions') {
+        arr.push({
+          label: labels[key],
+          key: (parent ? labels[key] + ' (parent: ' + parent + ')' : labels[key]),
+          children: createCategoryTree(allQuestions[labels[key]], labels[key])
+        })
+      }
+    }
+    return arr
+  } else {
+    return null
+  }
 }
