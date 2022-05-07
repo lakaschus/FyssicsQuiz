@@ -6,4 +6,5 @@ export function getRandomQuestion (settings) {
    * @param settings Object containg the settings, e.g. difficulty and
    * question categories
    */
+  
 }
