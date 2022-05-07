@@ -54,14 +54,12 @@
                   </n-collapse-item>
                 </n-collapse>
               </div>
-              <div
-                v-if="
-                  allQuestions[key][subKey][subSubKey]['questions']
-                "
-              >
-              {{allQuestions[key][subKey][subSubKey]['questions']}}
+              <div v-if="allQuestions[key][subKey][subSubKey]['questions']">
+                {{ allQuestions[key][subKey][subSubKey]["questions"] }}
                 <n-collapse
-                  v-for="path in allQuestions[key][subKey][subSubKey]['questions']"
+                  v-for="path in allQuestions[key][subKey][subSubKey][
+                    'questions'
+                  ]"
                 >
                   <n-collapse-item
                     v-if="path.length"
@@ -83,8 +81,8 @@
 </template>
 <script>
 import DynamicComponent from "@/components/Dynamics/DynamicComponent.vue"
-import { getAllQuestions } from "@/utils/questionHelpers/compileQuestions.js"
 import { NCard, NTabs, NTabPane, NCollapse, NCollapseItem } from "naive-ui"
+import { useQuestionsStore } from "@/stores/questions"
 
 export default {
   components: {
@@ -97,18 +95,18 @@ export default {
   },
   data() {
     return {
-      allQuestions: null,
+      allQuestions: useQuestionsStore().questions,
     }
   },
   mounted() {
-    getAllQuestions("../..").then((data) => {
-      this.allQuestions = data
-      console.log("🚀 ~ file: index.vue ~ line 106 ~ getAllQuestions ~ this.allQuestions", this.allQuestions["Mathematics"]["Linear Algebra"])
-      console.log(
-        "🚀 ~ file: index.vue ~ line 22 ~ getAllQuestions ~ this.allQuestions",
-        Object.keys(this.allQuestions)
-      )
-    })
+    console.log(
+      "🚀 ~ file: index.vue ~ line 106 ~ getAllQuestions ~ this.allQuestions",
+      this.allQuestions["Mathematics"]["Linear Algebra"]
+    )
+    console.log(
+      "🚀 ~ file: index.vue ~ line 22 ~ getAllQuestions ~ this.allQuestions",
+      Object.keys(this.allQuestions)
+    )
   },
 }
 </script>
