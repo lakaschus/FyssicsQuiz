@@ -1,21 +1,17 @@
 <template>
-  <n-grid cols="24" item-responsive responsive="screen">
-    <n-gi content-style="-webkit-transform: rotate(-90deg);" style="-webkit-transform: rotate(-90deg); width: 250px;" span="1">
-     Difficulty Range
-    </n-gi>
-    <n-gi content-style="padding: 12px;" span="1">
-      <div style="height: 250px; justify-content: center">
-        <n-slider
-          v-model:value="sliderData.value"
-          :marks="sliderData.marks"
-          :min="sliderData.min"
-          :max="sliderData.max"
-          vertical
-          range
-        />
-      </div>
-    </n-gi>
-  </n-grid>
+  <div class="text-left">
+    <h4>Difficulty</h4>
+    <div class="h-60 h-max-60">
+      <n-slider
+        v-model:value="sliderData.value"
+        :marks="sliderData.marks"
+        :min="sliderData.min"
+        :max="sliderData.max"
+        vertical
+        range
+      />
+    </div>
+  </div>
 </template>
 
 <script setup>

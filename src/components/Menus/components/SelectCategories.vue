@@ -1,17 +1,20 @@
 <template>
-  <n-grid :cols="4" class="text-left">
-    <n-gi>
-      <n-tree
-        block-line
-        cascade
-        checkable
-        :data="data"
-        :default-expanded-keys="defaultExpandedKeys"
-        :default-checked-keys="defaultCheckedKeys"
-        @update:checked-keys="updateCheckedKeys"
-      />
-    </n-gi>
-  </n-grid>
+  <div class="text-left">
+      <h4>Select Categories:</h4>
+      <div class="h-60 max-h-60 overflow-auto">
+        <n-tree
+          block-line
+          cascade
+          checkable
+          virtual-scroll
+          style="height: 15rem"
+          :data="data"
+          :default-expanded-keys="defaultExpandedKeys"
+          :default-checked-keys="defaultCheckedKeys"
+          @update:checked-keys="updateCheckedKeys"
+        />
+      </div>
+  </div>
 </template>
 <script setup>
 import { defineComponent, ref, watch } from "vue"

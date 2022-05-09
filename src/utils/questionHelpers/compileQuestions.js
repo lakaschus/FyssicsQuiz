@@ -127,11 +127,20 @@ export function createCategoryTree (allQuestions, parent = null) {
   const labels = Object.keys(allQuestions)
   if (labels.length > 1) {
     for (const key in labels) {
+      const parentString = parent ? ' (parent: ' + parent + ')' : ''
       if (labels[key] !== 'questions') {
         arr.push({
           label: labels[key],
-          key: (parent ? labels[key] + ' (parent: ' + parent + ')' : labels[key]),
-          children: createCategoryTree(allQuestions[labels[key]], labels[key])
+          key: parent ? labels[key] + parentString : labels[key],
+          children: createCategoryTree(
+            allQuestions[labels[key]],
+            labels[key] + parentString
+          )
+        })
+      } else {
+        arr.push({
+          label: 'Uncategorized',
+          key: parent ? 'Uncategorized' + parentString : 'Uncategorized'
         })
       }
     }
