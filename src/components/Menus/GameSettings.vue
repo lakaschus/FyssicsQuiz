@@ -8,6 +8,8 @@
   </n-gi>
   <n-gi content-style="padding: 12px;" span="4">
   <time-slider></time-slider>
+  <other-settings></other-settings> 
+  
   </n-gi>
 </n-grid>
 </template>
@@ -17,6 +19,7 @@ import { NGrid, NGi } from "naive-ui"
 import DifficultySlider from './components/DifficultySlider.vue'
 import SelectCategories from './components/SelectCategories.vue'
 import TimeSlider from './components/TimeSlider.vue'
+import OtherSettings from './components/OtherSettings.vue'
 
 function print(arg) {
   console.log("print: ", arg)
