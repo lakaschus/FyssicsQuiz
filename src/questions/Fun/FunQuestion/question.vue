@@ -2,8 +2,7 @@
   <div class="text-left">
     <n-card :title="title">
       <p>
-        Name the Newton's laws of motion! Write down the formulas and briefly
-        explain what they are describing.
+        What is the value of <Equation formula="$\epsilon$" /> ?
       </p>
     </n-card>
   </div>

@@ -71,8 +71,12 @@ export function verifyMeta (meta) {
         return false
       }
     } else {
-      console.log('Subcategory needs to be specified!')
-      return false
+      if (!meta.specialCategory) {
+        return true
+      } else {
+        console.log('There must not be a special category without subcategory!')
+        return false
+      }
     }
   } else {
     return false
@@ -92,8 +96,11 @@ export function compileAllQuestions (data) {
         allQuestions[el.category][el.subCategory][
           el.specialCategory
         ].questions.push(el.path)
-      } else {
+      }
+      if (el.subCategory) {
         allQuestions[el.category][el.subCategory].questions.push(el.path)
+      } else {
+        allQuestions[el.category].questions.push(el.path)
       }
     }
   })
@@ -113,6 +120,10 @@ export async function getAllQuestions (prefix = '@') {
   }
   console.log('METAS: ', metas)
   const allQuestions = compileAllQuestions(metas)
+  console.log(
+    '🚀 ~ file: compileQuestions.js ~ line 116 ~ getAllQuestions ~ allQuestions',
+    allQuestions
+  )
   return allQuestions
 }
 
@@ -140,7 +151,7 @@ export function createCategoryTree (allQuestions, parent = null) {
       } else {
         arr.push({
           label: 'Uncategorized',
-          key: parent ? 'Uncategorized' + parentString : 'Uncategorized'
+          key: 'Uncategorized' + parentString
         })
       }
     }
