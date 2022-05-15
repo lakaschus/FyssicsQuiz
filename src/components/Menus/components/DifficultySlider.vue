@@ -19,10 +19,10 @@ import { reactive, watch } from "vue"
 import { NGrid, NSlider, NLayoutContent, NGridItem, NGi } from "naive-ui"
 
 const sliderData = reactive({
-  value: [0, 9],
-  min: 0,
-  max: 9,
-  marks: { ...Array.from({ length: 10 }, (_, i) => i + 1) },
+  value: [1, 10],
+  min: 1,
+  max: 10,
+  marks: { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10 },
 })
 
 const emit = defineEmits(["sliderRange"])

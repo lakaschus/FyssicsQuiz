@@ -1,7 +1,7 @@
 <template>
 <div class="inline-flex mt-2 mb-2">
   <n-space>
-    <n-switch v-model:value="active" size="large">
+    <n-switch v-model:value="jokerActive" size="large">
       <template #icon> 🔮 </template>
     </n-switch> <span class="ml-2">Joker</span> 
     <n-tooltip trigger="hover">
@@ -19,7 +19,15 @@
 <script setup>
 import { InformationCircleOutline } from '@vicons/ionicons5'
 import { NSwitch, NSpace, NTooltip, NIcon } from "naive-ui"
-import { ref } from "vue"
+import { ref, watch } from "vue"
 
-let active = ref(false)
+let jokerActive = ref(false)
+
+const emit = defineEmits(["jokerActive"])
+watch(
+  jokerActive,
+  (data) => {
+    emit("jokerActive", data)
+  }
+)
 </script>
