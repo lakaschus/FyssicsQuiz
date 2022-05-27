@@ -3,8 +3,9 @@
   <n-tabs size="large" justify-content="space-evenly" v-if="allQuestions">
     <n-tab-pane :name="key" :tab="key" v-for="key in Object.keys(allQuestions)">
       <h3>Subcategories:</h3>
-      <n-tabs size="large" justify-content="space-evenly" v-if="allQuestions">
+      <n-tabs size="large" justify-content="space-evenly" v-if="allQuestions" >
         <n-tab-pane
+        
           :name="subKey"
           :tab="subKey"
           v-for="subKey in Object.keys(allQuestions[key])"
@@ -110,4 +111,8 @@ export default {
   },
 }
 </script>
-<style lang=""></style>
+<style>
+.n-tabs .n-tabs-tab .n-tabs-tab__label {
+    margin-right: 0.5rem;
+}
+</style>
