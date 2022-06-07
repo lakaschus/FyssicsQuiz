@@ -1,6 +1,6 @@
 <template lang="">
   <canvas class="min-h-full" id="blackboard"> </canvas>
-  <canvas class="min-h-full" id="blackboard2"> </canvas>
+  <canvas style="width:100%" id="blackboard2"> </canvas>
 </template>
 <script setup>
 import { fabric } from "fabric"

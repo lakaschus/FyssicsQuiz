@@ -10,6 +10,9 @@
       <n-tab-pane name="BlackBoard">
         <Black-Board></Black-Board>
       </n-tab-pane>
+      <n-tab-pane name="TextEditor">
+        <Text-Editor></Text-Editor>
+      </n-tab-pane>
     </n-tabs>
   </n-card>
 </template>
@@ -18,6 +21,7 @@ import { NCard, NTabs, NTabPane } from "naive-ui"
 import GameSettings from "../../../components/Menus/GameSettings.vue"
 import GameCanvas from "../../../components/Game/GameCanvas.vue"
 import BlackBoard from "../../../components/Game/BlackBoard.vue"
+import TextEditor from "@/components/Game/TextEditor/index.vue"
 
 export default {
   components: {
@@ -26,7 +30,8 @@ export default {
     NTabPane,
     GameCanvas,
     GameSettings,
-    BlackBoard
+    BlackBoard,
+    TextEditor
   },
 }
 </script>
