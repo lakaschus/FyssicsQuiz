@@ -1,61 +1,108 @@
 import { fabric } from 'fabric'
 
 export default function freeDrawing (canvasId) {
-  var canvas = new fabric.Canvas(canvasId)
-  canvas.setHeight(500);
-  canvas.setWidth(800); // set canvas width and height
-  // create a rect object
-  var deleteIcon =
-    "data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg version='1.1' id='Ebene_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='595.275px' height='595.275px' viewBox='200 215 230 470' xml:space='preserve'%3E%3Ccircle style='fill:%23F44336;' cx='299.76' cy='439.067' r='218.516'/%3E%3Cg%3E%3Crect x='267.162' y='307.978' transform='matrix(0.7071 -0.7071 0.7071 0.7071 -222.6202 340.6915)' style='fill:white;' width='65.545' height='262.18'/%3E%3Crect x='266.988' y='308.153' transform='matrix(0.7071 0.7071 -0.7071 0.7071 398.3889 -83.3116)' style='fill:white;' width='65.544' height='262.179'/%3E%3C/g%3E%3C/svg%3E"
+  const $ = function (id) {
+    return document.getElementById(id)
+  }
 
-  var img = document.createElement('img')
-  img.src = deleteIcon
+  const canvas = new fabric.Canvas(canvasId, {
+    isDrawingMode: true
+  })
+  canvas.setHeight(500)
+  canvas.setWidth(800) // set canvas width and height  canvas.setHeight(500);
 
   fabric.Object.prototype.transparentCorners = false
-  fabric.Object.prototype.cornerColor = 'blue'
-  fabric.Object.prototype.cornerStyle = 'circle'
 
-  function Add () {
-    var rect = new fabric.Rect({
-      left: 100,
-      top: 50,
-      fill: 'yellow',
-      width: 200,
-      height: 100,
-      objectCaching: false,
-      stroke: 'lightgreen',
-      strokeWidth: 4
-    })
+  const drawingModeEl = $('drawing-mode')
+  const drawingOptionsEl = $('drawing-mode-options')
+  const clearEl = $('clear-canvas')
 
-    canvas.add(rect)
-    canvas.setActiveObject(rect)
+  clearEl.onclick = function () {
+    canvas.clear()
   }
 
-  fabric.Object.prototype.controls.deleteControl = new fabric.Control({
-    x: 0.5,
-    y: -0.5,
-    offsetY: 16,
-    cursorStyle: 'pointer',
-    mouseUpHandler: deleteObject,
-    render: renderIcon,
-    cornerSize: 24
-  })
-
-  Add()
-
-  function deleteObject (eventData, transform) {
-    var target = transform.target
-    var canvas = target.canvas
-    canvas.remove(target)
-    canvas.requestRenderAll()
+  drawingModeEl.onclick = function () {
+    canvas.isDrawingMode = !canvas.isDrawingMode
+    if (canvas.isDrawingMode) {
+      drawingModeEl.innerHTML = 'Cancel drawing mode'
+      drawingOptionsEl.style.display = ''
+    } else {
+      drawingModeEl.innerHTML = 'Enter drawing mode'
+      drawingOptionsEl.style.display = 'none'
+    }
   }
 
-  function renderIcon (ctx, left, top, styleOverride, fabricObject) {
-    var size = this.cornerSize
-    ctx.save()
-    ctx.translate(left, top)
-    ctx.rotate(fabric.util.degreesToRadians(fabricObject.angle))
-    ctx.drawImage(img, -size / 2, -size / 2, size, size)
-    ctx.restore()
+  if (fabric.PatternBrush) {
+    const vLinePatternBrush = new fabric.PatternBrush(canvas)
+    vLinePatternBrush.getPatternSrc = function () {
+      const patternCanvas = fabric.document.createElement('canvas')
+      patternCanvas.width = patternCanvas.height = 10
+      const ctx = patternCanvas.getContext('2d')
+
+      ctx.strokeStyle = this.color
+      ctx.lineWidth = 5
+      ctx.beginPath()
+      ctx.moveTo(0, 5)
+      ctx.lineTo(10, 5)
+      ctx.closePath()
+      ctx.stroke()
+
+      return patternCanvas
+    }
+
+    const hLinePatternBrush = new fabric.PatternBrush(canvas)
+    hLinePatternBrush.getPatternSrc = function () {
+      const patternCanvas = fabric.document.createElement('canvas')
+      patternCanvas.width = patternCanvas.height = 10
+      const ctx = patternCanvas.getContext('2d')
+
+      ctx.strokeStyle = this.color
+      ctx.lineWidth = 5
+      ctx.beginPath()
+      ctx.moveTo(5, 0)
+      ctx.lineTo(5, 10)
+      ctx.closePath()
+      ctx.stroke()
+
+      return patternCanvas
+    }
+
+    const squarePatternBrush = new fabric.PatternBrush(canvas)
+    squarePatternBrush.getPatternSrc = function () {
+      const squareWidth = 10
+      const squareDistance = 2
+
+      const patternCanvas = fabric.document.createElement('canvas')
+      patternCanvas.width = patternCanvas.height = squareWidth + squareDistance
+      const ctx = patternCanvas.getContext('2d')
+
+      ctx.fillStyle = this.color
+      ctx.fillRect(0, 0, squareWidth, squareWidth)
+
+      return patternCanvas
+    }
+
+    const diamondPatternBrush = new fabric.PatternBrush(canvas)
+    diamondPatternBrush.getPatternSrc = function () {
+      const squareWidth = 10
+      const squareDistance = 5
+      const patternCanvas = fabric.document.createElement('canvas')
+      const rect = new fabric.Rect({
+        width: squareWidth,
+        height: squareWidth,
+        angle: 45,
+        fill: this.color
+      })
+
+      const canvasWidth = rect.getBoundingRect().width
+
+      patternCanvas.width = patternCanvas.height = canvasWidth + squareDistance
+      rect.set({ left: canvasWidth / 2, top: canvasWidth / 2 })
+
+      const ctx = patternCanvas.getContext('2d')
+      rect.render(ctx)
+
+      return patternCanvas
+    }
   }
 }
